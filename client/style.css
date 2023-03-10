@@ -1,6 +1,24 @@
 button {
-    width: 150px;
+    width: 200px;
     height: 24px;
-    margin: 10px;
+    margin-bottom: 10px;
     border-radius: 12px;
+}
+
+#compliment-button {
+    margin-top: 15px;
+}
+
+input {
+    margin-bottom: 15px;
+    display: block;
+    width: 200px;
+}
+
+h3 {
+    margin-top: 40px;
+}
+
+body {
+    background-color: #bb99ff;
 }
