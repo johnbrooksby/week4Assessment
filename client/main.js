@@ -42,7 +42,7 @@ function addPrayer(event){
 
     axios.post(`${baseURL}/prayer`, prayerRequestBody).then(result => {
         console.log(result.data)
-        alert(`Prayer request submitted successfully`)
+        alert(`Prayer request for ${result.data.name}'s ${result.data.reason} submitted successfully`)
     }).catch(err => console.log(err.data))
     prayerName.textContent = ""
    
@@ -65,17 +65,32 @@ function editPrayer (event) {
     }
 
     axios.put(`${baseURL}/prayerlist?name=${name}`, prayerEditBody).then(result => {
-        alert(`${name} updated`)
+        alert(`${result.data.name}'s request has been updated to ${result.data.reason}`)
+        // console.log(result.data.reason)
+    }).catch(err => {
+        console.log(err)
+        alert(`Person not found on prayer list`)
+    })
+}
+
+function delFromList (event) {
+    event.preventDefault()
+
+    let id = +deletePrayer.value
+
+    axios.delete(`${baseURL}/prayer?ID=${id}`).then((result) => {
+        alert(`${result.data.name}, ID# ${result.data.ID}, removed from prayer list.`)
         console.log(result.data)
     }).catch(err => {
         console.log(err)
-        alert(`Person not found`)
+        alert("Person not found on prayer list")
     })
+
 }
 
 complimentBtn.addEventListener('click', getCompliment)
 fortuneBtn.addEventListener('click', getfortune)
 addPrayerForm.addEventListener("submit", addPrayer)
 getPrayerList.addEventListener("click", getList)
-editPrayerForm.addEventListener("submit", editPrayer )
-// deletePrayer.addEventListener("submit", )
+editPrayerForm.addEventListener("submit", editPrayer)
+deletePrayerForm.addEventListener("submit", delFromList)

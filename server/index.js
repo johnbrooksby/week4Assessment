@@ -9,12 +9,13 @@ app.use(express.json());
 
 
 
-const { getCompliment, getFortune, addPrayerRequest, getPrayerList, editPrayer } = require('./controller')
+const { getCompliment, getFortune, addPrayerRequest, getPrayerList, editPrayer, deleteFromList } = require('./controller')
 
 app.get("/api/compliment", getCompliment);
 app.get("/api/fortune", getFortune);
 app.post("/api/prayer", addPrayerRequest)
 app.get("/api/prayerlist", getPrayerList)
 app.put("/api/prayerlist", editPrayer)
+app.delete("/api/prayer", deleteFromList)
 
 app.listen(4000, () => console.log("Server running on 4000"));

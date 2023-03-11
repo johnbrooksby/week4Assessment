@@ -11,20 +11,20 @@
     </section>
     <form id="prayer">
       <h3>Do you have a prayer request?</h3>
-      <input id="person-name" placeholder="Person's name"/>
+      <input id="person-name" placeholder="Person's name" required/>
       <input id="prayer-reason" placeholder="Reason for Prayer"/>
       <button>Add Request</button>
     </form>
     <button id="getPrayers">See all Prayer Requests</button>
     <form id="edit">
       <h3> Edit Request</h3>
-      <input id="existing-name" placeholder="Person's name">
+      <input id="existing-name" placeholder="Person's name" required/>
       <input id="new-request" placeholder="New request"/>
       <button>Submit</button>
     </form>
     <form id="delete">
       <h3>Delete Request</h3>
-      <input id="delete-request" placeholder="Person's name"/>
+      <input id="delete-request" placeholder="Person's ID" required/>
       <button>Delete</button>
     </form>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>

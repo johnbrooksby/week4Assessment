@@ -22,3 +22,13 @@ h3 {
 body {
     background-color: #94eb94;
 }
+
+button:hover {
+    scale: 1.03;
+    background-color: #cccccc;
+    cursor: pointer;
+}
+
+button:active {
+    scale: 1.01;
+}

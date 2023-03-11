@@ -1,17 +1,6 @@
 
 let ID = 1;
-let prayerList = [
-    {
-        ID: 1,
-        name: "John",
-        reason: "school"
-    },
-    {
-        ID: 2,
-        name: "Bob",
-        reason: "work"
-    }
-];
+let prayerList = [];
 
 module.exports = {
 
@@ -56,7 +45,30 @@ module.exports = {
             res.sendStatus(404)
         } else {
             prayerList[index].reason = reason
-            res.status(200).send(prayerList)
+            res.status(200).send(prayerList[index])
+        }
+    },
+    deleteFromList: (req, res) => {
+        let deleteID = +req.query.ID
+        let index
+
+        for (let i = 0; i < prayerList.length; i++){
+            let currentID = prayerList[i].ID
+            if (currentID === deleteID)
+                index = i
+        }
+        if (index === undefined) {
+            res.sendStatus(404)
+        } else {
+            console.log("No, I'm firing")
+            let removedID = deleteID
+            let removedPerson = prayerList.splice(index, 1)
+            let removedBod = {
+                ID: removedID,
+                name: removedPerson[0].name
+            }
+            console.log(removedBod)
+            res.status(200).send(removedBod)
         }
     }
 
