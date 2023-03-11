@@ -11,7 +11,7 @@ const deletePrayer = document.getElementById("delete-request")
 
 
 const baseURL = "http://localhost:4000/api"
-let globalID = 1;
+
 
 const getCompliment = () => {
     axios.get("http://localhost:4000/api/compliment/")
@@ -29,23 +29,27 @@ const getfortune = () => {
     });
 };
 
-let prayerRequestBody = {
-    id: globalID,
-    name: prayerName.value,
-    reason: prayerReason.value
-}
 
-function addPrayer(){
-    axios.post(`${baseURL}/prayer`, [prayerRequestBody]).then(result => {
+function addPrayer(event){
+    event.preventDefault()
+
+    let prayerRequestBody = {
+
+        name: prayerName.value,
+        reason: prayerReason.value
+    }
+    console.log(prayerName.value)
+
+    axios.post(`${baseURL}/prayer`, prayerRequestBody).then(result => {
         console.log(result.data)
         alert(`Prayer request submitted successfully`)
     }).catch(err => console.log(err.data))
-
-    globalID++
+    prayerName.textContent = ""
+   
 };
 
 complimentBtn.addEventListener('click', getCompliment)
 fortuneBtn.addEventListener('click', getfortune)
-addPrayer.addEventListener("submit", )
-editPrayer.addEventListener("submit", )
-deletePrayer.addEventListener("submit", )
+addPrayerForm.addEventListener("submit", addPrayer)
+// editPrayerForm.addEventListener("submit", )
+// deletePrayer.addEventListener("submit", )

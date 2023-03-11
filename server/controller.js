@@ -1,3 +1,7 @@
+
+let ID = 1;
+let prayerList = [];
+
 module.exports = {
 
     getCompliment: (req, res) => {
@@ -16,6 +20,13 @@ module.exports = {
         let randomFortune = fortunes[randomIndex];
 
         res.status(200).send(randomFortune);
+    },
+    addPrayerRequest: (req, res) => {
+        let newPrayerItem = {...req.body, ID}
+        prayerList.push(newPrayerItem)
+        console.log(prayerList)
+        ID++
+        res.send(newPrayerItem)
     }
-    
+
 }
