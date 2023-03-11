@@ -42,7 +42,7 @@ function addPrayer(event){
 
     axios.post(`${baseURL}/prayer`, prayerRequestBody).then(result => {
         console.log(result.data)
-        alert(`Prayer request for ${result.data.name}'s ${result.data.reason} submitted successfully`)
+        alert(`Prayer request for ${result.data.name}'s ${result.data.reason} submitted successfully. Remember ID#${result.data.ID}`)
     }).catch(err => console.log(err.data))
     prayerName.textContent = ""
    
@@ -66,7 +66,7 @@ function editPrayer (event) {
 
     axios.put(`${baseURL}/prayerlist?name=${name}`, prayerEditBody).then(result => {
         alert(`${result.data.name}'s request has been updated to ${result.data.reason}`)
-        // console.log(result.data.reason)
+        console.log(result.data)
     }).catch(err => {
         console.log(err)
         alert(`Person not found on prayer list`)

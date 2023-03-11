@@ -60,14 +60,12 @@ module.exports = {
         if (index === undefined) {
             res.sendStatus(404)
         } else {
-            console.log("No, I'm firing")
             let removedID = deleteID
             let removedPerson = prayerList.splice(index, 1)
             let removedBod = {
                 ID: removedID,
                 name: removedPerson[0].name
             }
-            console.log(removedBod)
             res.status(200).send(removedBod)
         }
     }
