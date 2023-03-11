@@ -39,7 +39,6 @@ function addPrayer(event){
         name: prayerName.value,
         reason: prayerReason.value
     }
-    console.log(prayerName.value)
 
     axios.post(`${baseURL}/prayer`, prayerRequestBody).then(result => {
         console.log(result.data)
@@ -56,9 +55,27 @@ function getList (){
     })
 }
 
+function editPrayer (event) {
+    event.preventDefault()
+
+    let prayerEditBody = {
+
+        name: editPrayerNameInput.value,
+        reason: editPrayerReason.value
+    }
+
+    axios.put(`${baseURL}/prayerlist?name=${name}`, prayerEditBody).then(result => {
+        alert(`${name} updated`)
+        console.log(result.data)
+    }).catch(err => {
+        console.log(err)
+        alert(`Person not found`)
+    })
+}
+
 complimentBtn.addEventListener('click', getCompliment)
 fortuneBtn.addEventListener('click', getfortune)
 addPrayerForm.addEventListener("submit", addPrayer)
 getPrayerList.addEventListener("click", getList)
-// editPrayerForm.addEventListener("submit", )
+editPrayerForm.addEventListener("submit", editPrayer )
 // deletePrayer.addEventListener("submit", )

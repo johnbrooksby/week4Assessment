@@ -1,6 +1,17 @@
 
 let ID = 1;
-let prayerList = [];
+let prayerList = [
+    {
+        ID: 1,
+        name: "John",
+        reason: "school"
+    },
+    {
+        ID: 2,
+        name: "Bob",
+        reason: "work"
+    }
+];
 
 module.exports = {
 
@@ -24,12 +35,29 @@ module.exports = {
     addPrayerRequest: (req, res) => {
         let newPrayerItem = {ID, ...req.body}
         prayerList.push(newPrayerItem)
-        console.log(prayerList)
         ID++
         res.status(200).send(newPrayerItem)
     },
     getPrayerList: (req, res) => {
         res.status(200).send(prayerList)
+    },
+    editPrayer: (req, res) => {
+        let putName = req.body.name
+        let reason = req.body.reason
+        let index
+        
+        for (let i = 0; i < prayerList.length; i++){
+            let currentName = prayerList[i].name
+            if (currentName === putName){
+               index = i
+            }
+        }
+        if (index === undefined){
+            res.sendStatus(404)
+        } else {
+            prayerList[index].reason = reason
+            res.status(200).send(prayerList)
+        }
     }
 
 }
