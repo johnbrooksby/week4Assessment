@@ -8,6 +8,7 @@ const prayerReason = document.getElementById("prayer-reason")
 const editPrayerNameInput = document.getElementById("existing-name")
 const editPrayerReason = document.getElementById("new-request")
 const deletePrayer = document.getElementById("delete-request")
+const getPrayerList = document.getElementById("getPrayers")
 
 
 const baseURL = "http://localhost:4000/api"
@@ -48,8 +49,16 @@ function addPrayer(event){
    
 };
 
+function getList (){
+    axios.get(`${baseURL}/prayerlist`).then((result) => {
+        console.log(result.data)
+        alert("Full prayer list is in the console.")
+    })
+}
+
 complimentBtn.addEventListener('click', getCompliment)
 fortuneBtn.addEventListener('click', getfortune)
 addPrayerForm.addEventListener("submit", addPrayer)
+getPrayerList.addEventListener("click", getList)
 // editPrayerForm.addEventListener("submit", )
 // deletePrayer.addEventListener("submit", )

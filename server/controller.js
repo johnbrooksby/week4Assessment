@@ -22,11 +22,14 @@ module.exports = {
         res.status(200).send(randomFortune);
     },
     addPrayerRequest: (req, res) => {
-        let newPrayerItem = {...req.body, ID}
+        let newPrayerItem = {ID, ...req.body}
         prayerList.push(newPrayerItem)
         console.log(prayerList)
         ID++
-        res.send(newPrayerItem)
+        res.status(200).send(newPrayerItem)
+    },
+    getPrayerList: (req, res) => {
+        res.status(200).send(prayerList)
     }
 
 }
