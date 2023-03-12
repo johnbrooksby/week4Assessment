@@ -46,6 +46,8 @@ function addPrayer(event){
     }).catch(err => console.log(err.data))
     prayerName.textContent = ""
    
+    prayerName.value = "";
+    prayerReason.value = "";
 };
 
 function getList (){
@@ -71,6 +73,9 @@ function editPrayer (event) {
         console.log(err)
         alert(`Person not found on prayer list`)
     })
+
+    editPrayerNameInput.value = "";
+    editPrayerReason.value = "";
 }
 
 function delFromList (event) {
@@ -85,6 +90,8 @@ function delFromList (event) {
         console.log(err)
         alert("Person not found on prayer list")
     })
+
+    deletePrayer.value = "";
 
 }
 
